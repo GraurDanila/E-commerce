@@ -14,7 +14,11 @@ if (!isOpen) {
 }
  }, [isOpen, onOpen]); 
 
-  return null;
+  return (
+    <div className="p-4">
+      Root Page
+    </div>
+  );
 }
 
 export default SetupPage;
