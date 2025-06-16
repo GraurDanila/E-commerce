@@ -26,7 +26,7 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { useOrigin } from "@/hooks/use-origin";
 
-interface SettingsFormProps {
+interface BillboardFormProps {
     initialData: Store;
 }
 
@@ -34,9 +34,9 @@ const formSchema = z.object({
     name: z.string().min(1),
 });
 
-type SettingsFormValues = z.infer<typeof formSchema>;
+type BillboardFormValues = z.infer<typeof formSchema>;
 
-export const SettingsForm: React.FC<SettingsFormProps> = ({
+export const BillboardForm: React.FC<BillboardFormProps> = ({
     initialData
 }) => {
  const params = useParams(); 
@@ -46,12 +46,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
  const [open, setOpen] = useState(false);
  const [loading,setLoading] = useState(false);
 
- const form = useForm<SettingsFormValues>({
+ const form = useForm<BillboardFormValues>({
   resolver: zodResolver(formSchema),
   defaultValues: initialData
  });
 
- const onSubmit = async (data: SettingsFormValues) => {
+ const onSubmit = async (data: BillboardFormValues) => {
     try {
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
